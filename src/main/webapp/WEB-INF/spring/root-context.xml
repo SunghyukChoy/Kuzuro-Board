@@ -12,8 +12,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
- 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
- 		<property name="url" value="com.mysql//localhost:3306/board" />
+ 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+ 		<property name="url" value="jdbc:mysql://localhost:3306/board?serverTimezone=UTC" /> 		
  		<property name="username" value="kuzuro" />
  		<property name="password" value="1111" />
 	</bean>
@@ -28,4 +28,7 @@
  		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>		
 	
+	<context:component-scan base-package="com.board.domain"></context:component-scan>
+	<context:component-scan base-package="com.board.dao"></context:component-scan>
+	<context:component-scan base-package="com.board.service"></context:component-scan>
 </beans>
