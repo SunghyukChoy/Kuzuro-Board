@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mappers.board">
+	
+	<!-- 게시물 목록 -->
+	<!-- id는 매퍼 내에서 쿼리를 구분짓는 고유한 이름, resultType은 쿼리 결과의 형태 -->
+	<select id="list" resultType="com.board.domain.BoardVO">
+		select
+			bno, title, content, writer, regDate, viewCnt
+		from tbl_board
+	</select>
+</mapper>
