@@ -18,4 +18,15 @@
 			tbl_board(title, content, writer)
 				values(#{title}, #{content}, #{writer})
 	</insert>
+	
+	<!-- 게시물 조회 -->
+	<select id="view" parameterType="int" resultType="com.board.domain.BoardVO">
+		SELECT 
+			bno, title, content, writer, regDate, viewCnt
+		FROM 
+			tbl_board
+		WHERE 
+			bno = #{ bno }
+	</select>
+	
 </mapper>
