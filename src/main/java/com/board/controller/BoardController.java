@@ -19,6 +19,7 @@ import com.board.service.BoardService;
 @RequestMapping("/board")
 public class BoardController {
 
+    // 에러 로그 출력
     private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
     @Inject
@@ -43,6 +44,8 @@ public class BoardController {
     // 게시물 작성
     @RequestMapping(value = "/write", method = RequestMethod.POST)
     public String postWrite(BoardVO vo) throws Exception {
+
+        // 에러 로그 출력
         logger.error("WRITER 에 값이 나오는지 확인 : " + vo.getWriter());
 
         service.write(vo);

@@ -8,6 +8,11 @@
 <title>게시물 목록</title>
 </head>
 <body>
+
+	<div>
+		<%@ include file="../include/nav.jsp" %>
+	</div>
+	
 	<table>
 		<thead>
 			<tr>

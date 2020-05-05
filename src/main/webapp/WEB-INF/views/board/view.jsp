@@ -9,6 +9,10 @@
 </head>
 <body>
 
+	<div>
+		<%@ include file="../include/nav.jsp" %>
+	</div>
+
 	<form method="post">
 		<label>제목</label>
 		${ view.title }<br/>
