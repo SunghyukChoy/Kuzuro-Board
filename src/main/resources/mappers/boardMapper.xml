@@ -46,4 +46,39 @@
 		WHERE bno = #{ bno }
 	</delete>
 	
+	<!-- 페이징 구현 시 더미 데이터를 만들기 위해 사용했던 쿼리. -->
+	<!-- INSERT INTO tbl_board(title, content, writer)
+	SELECT title, content, writer FROM tbl_board; -->
+	
+	<!-- bno 갯수 조회 -->
+	<!-- SELECT COUNT(bno) FROM tbl_board; -->
+	
+	<!-- bno에 따라 10개까지 내림차순 정렬 -->
+	<!-- SELECT 
+		bno, title, writer, regDate, viewCnt
+	FROM tbl_board
+	ORDER BY bno DESC
+	LIMIT 10; -->	
+	
+	<!-- bno에 따라 0번째부터 10번째개까지 내림차순 정렬 , 한 페이지에 출력될 게시물 갯수 설정 가능-->
+	<!-- SELECT 
+		bno, title, writer, regDate, viewCnt
+	FROM tbl_board
+	ORDER BY bno DESC
+	LIMIT 0, 10; -->
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="count" resultType="int">
+		SELECT COUNT(bno) FROM tbl_board
+	</select>	
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+	SELECT 
+		bno, title, writer, regDate, viewCnt
+	FROM tbl_board
+	ORDER BY bno DESC
+	LIMIT #{displayPost}, #{postNum}
+	</select>
+	
 </mapper>
