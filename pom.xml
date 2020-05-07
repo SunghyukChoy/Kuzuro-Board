@@ -2,6 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<!-- Maven : Build Tool, 프레임워크, 라이브러리 관리 -->	
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.board</groupId>
@@ -35,6 +37,7 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- ************** mysql과 스프링을 연결해주는 코드 시작 https://mvnrepository.com/에서 검색 가능************** -->
 		<!-- mysql db -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -62,6 +65,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		<!-- ************** mysql과 스프링을 연결해주는 코드 끝 ************** -->
 
 		<!-- AspectJ -->
 		<dependency>

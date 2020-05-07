@@ -18,11 +18,13 @@ public class BoardDAOImpl implements BoardDAO {
 
     private static String namespace = "com.board.mappers.board";
 
+    // namespace는 매퍼의 namespace와 일치하여야 함
     // 게시물 목록
     @Override
     public List<BoardVO> list() throws Exception {
 
         return sql.selectList(namespace + ".list");
+        // tbl_board 1행의 데이터의 형태는 BoardVO와 같음. BoardVO를 List 형태로 만들면 게시물 목록을 받아올 수 있음.
     }
 
     @Override

@@ -3,5 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
+	<!-- 이 파일은 mybatis 설정을 위한 파일. root-context.xml의 bean 태그에 설정된 값과 동일한 파일명을 가져야 함
+	위의 코드는 mybastis 사이트를 참고한 기본 코드-->
 </configuration>
+

@@ -7,10 +7,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">		
+	<!-- 하단의 Namespaces 탭에서 beans, context, jdbc, mybatis-spring 선택 시 위의 코드들 추가. 아래에 beans 코드들 추가 -->
+	
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+	<!-- ******************데이터베이스에 접속할 수 있는 bean 코드 시작****************** -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
  		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
  		<property name="url" value="jdbc:mysql://localhost:3306/board?serverTimezone=UTC" /> 		
@@ -26,7 +28,8 @@
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
  		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	</bean>		
+	</bean>
+	<!-- ******************데이터베이스에 접속할 수 있는 bean 코드 끝****************** -->		
 	
 	<context:component-scan base-package="com.board.domain"></context:component-scan>
 	<context:component-scan base-package="com.board.dao"></context:component-scan>

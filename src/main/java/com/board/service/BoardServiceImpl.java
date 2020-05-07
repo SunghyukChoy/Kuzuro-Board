@@ -9,7 +9,15 @@ import org.springframework.stereotype.Service;
 import com.board.dao.BoardDAO;
 import com.board.domain.BoardVO;
 
-@Service
+/**
+ * @Autowired 나 @Inject 어노테션을 통해, 형(class, interface) 기반으로 스프링 Bean을 가져올 경우 만약에
+ *            구현된 컴포넌트가 2개 이상일 경우 NoUniqueBeanDefinitionException 이 발생하게 된다. 이를
+ *            회피하기 위해서는 autowired나 inject로 가져오는 변수명을 Spring Bean id 와 맞추어 줘야 하는데
+ * @Component 류 어노테이션 인자로 value 가 그 이름을 강제로 지정해 줄 수 있다.
+ * @author likea
+ *
+ */
+@Service(value = "service")
 public class BoardServiceImpl implements BoardService {
 
     @Inject

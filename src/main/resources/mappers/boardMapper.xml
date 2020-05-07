@@ -3,17 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.board.mappers.board">
+<!-- 위의 코드는 mybatis 사이트를 참고한 기본 코드 -->
+<!-- namespace는 각각의 매퍼를 구분하는 고유명 -->
 	
 	<!-- 게시물 목록 -->
 	<!-- id는 매퍼 내에서 쿼리를 구분짓는 고유한 이름, resultType은 쿼리 결과의 형태 -->
 	<select id="list" resultType="com.board.domain.BoardVO">
+					<!-- resultType은 쿼리를 실행 후 결과가 있을 경우 데이터 사용 -->
 		select
 			bno, title, content, writer, regDate, viewCnt
 		from tbl_board
+		order by bno desc
 	</select>
 	
 	<!-- 게시물 작성 -->
 	<insert id="write" parameterType="com.board.domain.BoardVO">
+					<!-- parameterType은 데이터를 넣을 때 사용 -->
 		insert into 
 			tbl_board(title, content, writer)
 				values(#{title}, #{content}, #{writer})

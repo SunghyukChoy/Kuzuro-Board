@@ -34,16 +34,21 @@ public class BoardController {
         list = service.list();
 
         model.addAttribute("list", list);
+        // Model은 컨트롤러와 뷰를 연결해주는 역할을 함.
     }
 
     // 게시물 작성
     @RequestMapping(value = "/write", method = RequestMethod.GET)
+    // get 방식은 서버 -> 사용자로 데이터가 이동하는 것.
+    // 게시물 작성처럼 사용자 -> 서버로 데이터가 이동하려면 post 메서드 필요.
     public void getWrite() throws Exception {
 
     }
 
     // 게시물 작성
     @RequestMapping(value = "/write", method = RequestMethod.POST)
+    // post 방식의 메서드를 만들고 컨트롤러가 데이터를 받은 후, service에 넘기고 이걸 다시 DAO에 넘기고
+    // 마지막으로 데이터 베이스 에옮기면서 데이터가 입력됨.
     public String postWrite(BoardVO vo) throws Exception {
 
         // 에러 로그 출력
@@ -52,6 +57,7 @@ public class BoardController {
         service.write(vo);
 
         return "redirect:/board/list";
+        // 작업 후 /board/list 페이지로 돌아가겠다.
     }
 
     // 게시물 조회
