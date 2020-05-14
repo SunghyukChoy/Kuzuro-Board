@@ -26,6 +26,7 @@
 	
 	<!-- 게시물 조회 -->
 	<select id="view" parameterType="int" resultType="com.board.domain.BoardVO">
+					<!-- parameterType은 매퍼에 들어오는 데이터, resultType은 매퍼가 내보내는 데이터 -->
 		SELECT 
 			bno, title, content, writer, regDate, viewCnt
 		FROM 
@@ -82,6 +83,33 @@
 	SELECT 
 		bno, title, writer, regDate, viewCnt
 	FROM tbl_board
+	ORDER BY bno DESC
+	LIMIT #{displayPost}, #{postNum}
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 + 검색 -->
+	<select id="listPageSearch" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+	SELECT 
+		bno, title, writer, regDate, viewCnt
+	FROM tbl_board
+	
+	 <if test='searchType.equals("title")'>
+  		WHERE title LIKE concat('%', #{keyword}, '%')
+ 	</if>
+ 
+ 	<if test='searchType.equals("content")'>
+  		WHERE content LIKE concat('%', #{keyword}, '%')
+ 	</if>
+ 
+ 	<if test='searchType.equals("title_content")'>
+  		WHERE title LIKE concat('%', #{keyword}, '%') 
+   		or content LIKE concat('%', #{keyword}, '%')
+ 	</if>
+ 
+ 	<if test='searchType.equals("writer")'>
+  		WHERE writer LIKE concat('%', #{keyword}, '%')
+ 	</if>
+	
 	ORDER BY bno DESC
 	LIMIT #{displayPost}, #{postNum}
 	</select>
